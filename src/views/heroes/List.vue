@@ -22,7 +22,7 @@
               <!-- <a href="edit.html">edit</a> -->
               <router-link :to="'/heroes/' + item.id">edit</router-link>
               &nbsp;&nbsp;
-              <a href="javascript:window.confirm('Are you sure?')">delete</a>
+              <a @click.prevent="handleDelete(item.id)" href="javascript:void(0)">delete</a>
             </td>
           </tr>
         </tbody>
@@ -42,18 +42,46 @@ export default {
     };
   },
   created() {
-    // 发送异步请求，获取数据
-    axios
-      .get('http://127.0.0.1:3001/heroes')
-      .then((response) => {
-        // console.log(response);
-        if (response.status === 200) {
-          this.list = response.data;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.loadData();
+  },
+  methods: {
+    // 加载列表数据
+    loadData() {
+      // 发送异步请求，获取数据
+      axios
+        .get('http://127.0.0.1:3001/heroes')
+        .then((response) => {
+          // console.log(response);
+          if (response.status === 200) {
+            this.list = response.data;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    // 删除数据
+    handleDelete(id) {
+      // 删除提示
+      if (!confirm('是否要删除该数据？')) {
+        return;
+      }
+
+      // 发送请求，删除英雄
+      axios
+        .delete(`http://127.0.0.1:3001/heroes/${id}`)
+        .then((response) => {
+          if (response.status === 200) {
+            // 成功,重新加载列表
+            this.loadData();
+          } else {
+            alert('删除失败');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
