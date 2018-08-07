@@ -5,8 +5,6 @@ import HeroesList from '../views/heroes/List.vue';
 import EquipsList from '../views/equips/List.vue';
 import WeaponsList from '../views/weapons/List.vue';
 
-
-
 // 注册VueRouter插件  this.$router  this.$route
 Vue.use(VueRouter);
 
