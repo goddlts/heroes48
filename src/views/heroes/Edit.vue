@@ -10,7 +10,7 @@
         <label for="sex">英雄性别</label>
         <input v-model="formData.gender" type="text" class="form-control" id="sex" placeholder="英雄性别">
       </div>
-      <button @click.prevent="handleAdd" type="submit" class="btn btn-success">Submit</button>
+      <button @click.prevent="handleEdit" type="submit" class="btn btn-success">Submit</button>
     </form>
   </div>
 </template>
@@ -43,6 +43,24 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+  methods: {
+    // 点击按钮编辑英雄
+    handleEdit() {
+      axios
+        .put(`http://127.0.0.1:3001/heroes/${this.id}`, this.formData)
+        .then((response) => {
+          if (response.status === 200) {
+            // 跳转到列表
+            this.$router.push('/heroes');
+          } else {
+            alert('失败');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
