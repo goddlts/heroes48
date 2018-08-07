@@ -2,6 +2,35 @@
 
 > A Vue.js project
 
+## 首页
+
+- 把静态页面的代码粘贴到 App.vue的模板中
+- 安装bootstrap@3.3.7
+- 在main.js 中全局引入 样式
+
+```js
+// 导入全局样式
+// 导入bootstrap
+import 'bootstrap/dist/css/bootstrap.css';
+// 导入index.css
+import './assets/css/index.css';
+```
+
+- 配置字体，webpack.config.js中
+
+```json
+{
+  test: /\.(ttf|woff2|woff|eot)$/,
+  loader: 'file-loader',
+  options: {
+    name: '[name].[ext]?[hash]'
+  }
+}
+```
+
+- 运行 npm run dev
+
+
 ## src目录的分类
 
 - components 存放公共的组件
