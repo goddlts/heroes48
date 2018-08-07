@@ -1,17 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app"> 
     <!-- 网页的header -->
     <app-header></app-header>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-        </div>
+        <!-- sidebar -->
+        <app-sidebar></app-sidebar>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h2 class="sub-header">Hero List</h2>
           <a class="btn btn-success" href="add.html">Add</a>
@@ -232,11 +226,14 @@
 <script>
 // 导入AppHeader.vue 组件
 import AppHeader from './components/AppHeader.vue';
+// 导入AppSidebar.vue 组件
+import AppSidebar from './components/AppSidebar.vue';
 
 export default {
   // 局部组件
   components: {
-    AppHeader
+    AppHeader,
+    AppSidebar
   }
 };
 </script>
