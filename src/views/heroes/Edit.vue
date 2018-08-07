@@ -16,7 +16,10 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+  props: ['id'],
   data() {
     return {
       formData: {
@@ -24,6 +27,22 @@ export default {
         gender: ''
       }
     }
+  },
+  created() {
+    // 根据id请求，英雄对象
+    // axios.get('http://127.0.0.1:3001/heroes/' + this.id)
+    axios
+      .get(`http://127.0.0.1:3001/heroes/${this.id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          // this.formData.name = response.data.name;
+          // this.formData.gender = response.data.gender;
+          this.formData = response.data;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 };
 </script>

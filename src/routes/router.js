@@ -20,7 +20,7 @@ var router = new VueRouter({
     { path: '/', redirect: '/heroes' },
     { name: 'heroes', path: '/heroes', component: HeroesList },
     { name: 'heroadd', path: '/heroes/add', component: HeroesAdd },
-    { name: 'heroedit', path: '/heroes/:id', component: HeroesEdit },
+    { name: 'heroedit', path: '/heroes/:id', component: HeroesEdit, props: true },
     { name: 'equips', path: '/equips', component: EquipsList },
     { name: 'weapons', path: '/weapons', component: WeaponsList }
   ]
