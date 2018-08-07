@@ -14,7 +14,10 @@ Vue.use(VueRouter);
 // 创建路由对象
 var router = new VueRouter({
   // 配置激活的类样式
-  linkExactActiveClass: 'active',
+
+  // linkActiveClass 路由地址，只要包含a标签的href中的值，就具有该类样式
+  // linkExactActiveClass 精确的匹配路由地址，路由地址必须和a标签的href属性值一模一样，才具有该类样式
+  linkActiveClass: 'active',
   // 路由规则
   routes: [
     { path: '/', redirect: '/heroes' },
